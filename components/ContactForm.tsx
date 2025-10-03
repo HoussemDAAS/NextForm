@@ -12,9 +12,9 @@ import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Invalid email address." }).includes("@", { message: "Email must include an '@' symbol." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+  name: z.string().trim().min(1, { message: "Name is required." }).min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().trim().min(1, { message: "Email is required." }).email({ message: "Invalid email address." }),
+  message: z.string().trim().min(1, { message: "Message is required." }).min(10, { message: "Message must be at least 10 characters." }),
 });
 
 const ContactForm = () => {
